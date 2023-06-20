@@ -27,7 +27,9 @@
   </body>
   <script>
     const birds = [ "Parrots", "Falcons", "Eagles", "Emus", "Caracaras", "Egrets" ];
-
+    let eagleIndex = birds.indexOf('Eagles')
+    birds.splice(eagleIndex, 1)
+    let eBirds = birds.filter(bird => bird.includes ('E'))
     // Add your code here
 
     // Don't edit the code below here!
