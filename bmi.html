@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+</head>
+<style>
+    body{
+        background-color: burlywood;
+        color: blue;
+    }
+    main{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hidden{
+        display: none;
+    }
+</style>
+
+<body>
+    <h1>Body Mass Index</h1>
+    <main>
+    <section>
+        <label for="weight">weight</label>
+        <input type="number" name="weight" id="weight" placeholder="enter your name in kg"><br>
+    
+        <label for="height">height</label>
+        <input type="number" name="height" id="height" placeholder="enter your height in cm"><br>
+
+        <button>calculate</button>
+</section>
+
+<section>
+   <h2>Result</h2>
+   <div class="hidden">
+    <p>
+        <span class="result"></span>
+        <span>kgm <sup>-2</sup></span>
+    </p>
+    
+    <p>
+        status: <span class="status"></span>
+    </p>
+    
+    <p>
+        recommendation: <span class="recommend"></span>
+    </p>
+    </div>
+</section>
+</main>
+
+<script>
+   
+    const btn = document.querySelector('button')
+    const weight = document.getElementById('weight')
+    const height = document.getElementById ('height')
+    const result = document.getElementsByClassName ('result')[0]
+    const status = document.getElementsByClassName ('status')[0]
+    const  recommend = document.getElementsByClassName ('recommend')[0]
+    const hidden = document.getElementsByClassName ('hidden')[0]
+
+    function bmi(){
+        const we = weight.value
+        const he = height.value
+        const finalResult = (we / Math.pow((he/100), 2)).toFixed(2)
+
+        let res
+        let rec
+        
+        if(finalResult >= 30.0 ){
+            res ='Obesity'
+            rec = 'See a Doctor'
+        }
+        else if(finalResult >= 25 ){
+            res ='Over weight'
+            rec = 'Exercise Often and eat healthy'
+        }
+        else if(finalResult >= 18.5 ){
+            res ='Healthy weight'
+            rec = 'Maintain your eating habit and Exercise'
+        }
+        else  {
+            res='Underweight'
+            rec = 'Eat some often '
+        }
+
+        status.textContent = res
+        recommend.textContent  = rec
+        result.textContent = finalResult
+        hidden.style.display = 'block'
+    }
+
+    btn.addEventListener('click', bmi)
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenary</title>
+<style>
+    body{
+        background-color: brown;
+        color: beige;
+    }
+    h1{
+        color: black;
+        text-transform: uppercase;
+        text
+    }
+    button{
+        color: white;
+        background-color: blue;
+    }
+</style>
+</head>
+<body>
+    <h1>Voting Status</h1>
+    <label for="date">date of birth</label>
+    <input type="date" name="dob" id="date">
+    
+    <button>vote</button>
+    <p></p>
+    <script>
+        const input = document.querySelector('input')
+        const btn = document.querySelector ('button')
+        const para = document.querySelector('p')
+        
+        const voteStat = () => {
+            const age = (new Date().getFullYear()) - (input.value).slice(0,4)
+            para.textContent = age > 18 ? 'old enough to vote' : 'Too young to vote'
+        }
+        btn.addEventListener('click', voteStat)
+    </script>
+</body>
+</html>
